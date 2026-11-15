@@ -1,0 +1,31 @@
+# Python cache
+__pycache__/
+*.py[cod]
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Prediction outputs
+outputs/
+
+# IDE files
+.vscode/
+.idea/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Temporary files
+*.log
+*.tmp
+# Training and prediction runs
+runs/
+
+# Temporary camera captures
+camera_test.jpg
+camera_test_annotated.jpg
+weed.jpeg
+
