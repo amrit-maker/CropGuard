@@ -103,19 +103,19 @@ pip install -r requirements.txt
 ### Predict on a single image
 
 ```bash
-python predict.py --source "path/to/image.jpg"
+python predict.py --source "sample_images/ave-0045-0013.jpg"
 ```
 
 ### Predict on a folder
 
 ```bash
-python predict.py --source "path/to/folder"
+python predict.py --source "sample_images"
 ```
 
 ### Change confidence threshold
 
 ```bash
-python predict.py --source "path/to/image.jpg" --conf 0.40
+python predict.py --source "sample_images/ave-0045-0013.jpg" --conf 0.40
 ```
 
 The default confidence threshold is 0.25.
