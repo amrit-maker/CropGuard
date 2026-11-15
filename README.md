@@ -1,15 +1,16 @@
-# CropGuard 
+# CropGuard
 
 A small object detection project built using YOLO11 to identify crops and weeds in agricultural field images.
 
-I trained a YOLO11n model on a crop and weed dataset. The model detects two classes: `Crop` and `Weed`, and draws bounding boxes around the detected objects.
+I trained a YOLO11n model on a crop and weed dataset. The model detects two classes: `Crop` and `Weed`, and draws bounding boxes around detected objects.
 
 ## What it does
 
 - Detects crops and weeds in images.
 - Shows bounding boxes with class labels and confidence scores.
 - Works on a single image or a complete folder.
-- Saves the output images automatically.
+- Supports real-time detection using a webcam.
+- Saves prediction results automatically.
 - Allows changing the confidence threshold.
 
 ## Model details
@@ -18,7 +19,7 @@ I trained a YOLO11n model on a crop and weed dataset. The model detects two clas
 |---|---|
 | Model | YOLO11n |
 | Framework | Ultralytics |
-| Task | Object detection |
+| Task | Object Detection |
 | Classes | Crop, Weed |
 | Image size | 640 |
 | Default confidence | 0.25 |
@@ -34,7 +35,7 @@ I evaluated the trained model on 412 test images containing 3,394 annotated obje
 | mAP50 | 71.1% |
 | mAP50-95 | 50.9% |
 
-Class-wise results:
+### Class-wise results
 
 | Metric | Crop | Weed |
 |---|---:|---:|
@@ -45,7 +46,7 @@ Class-wise results:
 
 Crop detection is currently better than weed detection. Improving weed detection is one of the main things I would like to work on next.
 
-## Folder structure
+## Project structure
 
 ```text
 CropGuard/
@@ -54,24 +55,28 @@ CropGuard/
 │   └── cropguard_best.pt
 │
 ├── sample_images/
-├── outputs/
+│
+├── camera.py
 ├── predict.py
 ├── requirements.txt
+├── .gitignore
 └── README.md
 ```
 
+The `outputs/` folder is created automatically when predictions are run. Generated prediction images are not included in the repository.
+
 ## Setup
 
-You need Python installed on your system.
+You need Python 3.10 or later installed on your system.
 
-First, clone the repository:
+### 1. Clone the repository
 
 ```bash
 git clone https://github.com/amrit-maker/CropGuard.git
 cd CropGuard
 ```
 
-Create a virtual environment:
+### 2. Create a virtual environment
 
 **Windows:**
 
@@ -87,7 +92,7 @@ python3 -m venv .venv
 source .venv/bin/activate
 ```
 
-Install the required library:
+### 3. Install dependencies
 
 ```bash
 pip install -r requirements.txt
@@ -95,19 +100,19 @@ pip install -r requirements.txt
 
 ## Running the model
 
-To run CropGuard on one image:
+### Predict on a single image
 
 ```bash
 python predict.py --source "path/to/image.jpg"
 ```
 
-To run it on a folder containing multiple images:
+### Predict on a folder
 
 ```bash
 python predict.py --source "path/to/folder"
 ```
 
-You can also change the confidence threshold:
+### Change confidence threshold
 
 ```bash
 python predict.py --source "path/to/image.jpg" --conf 0.40
@@ -115,18 +120,47 @@ python predict.py --source "path/to/image.jpg" --conf 0.40
 
 The default confidence threshold is 0.25.
 
-The predicted images are saved in:
+Prediction results are saved in:
 
 ```text
 outputs/predictions/
 ```
 
+## Live Camera Detection
+
+CropGuard also supports real-time detection using a webcam.
+
+Run:
+
+```bash
+python camera.py
+```
+
+The default camera device is 0.
+
+You can change the confidence threshold:
+
+```bash
+python camera.py --conf 0.60
+```
+
+If you have multiple cameras, you can select another one:
+
+```bash
+python camera.py --camera 1
+```
+
+Press `Q` to close the camera window.
+
 ## Requirements
 
 - Python 3.10+
 - Ultralytics 8.4.211
-- PyTorch (installed as an Ultralytics dependency)
+- PyTorch
+- OpenCV (for live camera detection)
 - NVIDIA GPU recommended, but CPU inference is also supported.
+
+Dependencies are listed in `requirements.txt`.
 
 ## Future work
 
@@ -135,9 +169,8 @@ Some things I would like to improve:
 - Better weed detection.
 - Training with more diverse agricultural images.
 - Testing on images captured in real field conditions.
-- Adding real-time camera detection.
+- Improving live camera detection under different lighting conditions.
 
 ## Note
 
 This is an ongoing project. The model is still experimental, and its predictions may not always be correct, especially in cases where weeds are difficult to distinguish from crops.
-
