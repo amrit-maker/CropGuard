@@ -67,7 +67,7 @@ You need Python installed on your system.
 First, clone the repository:
 
 ```bash
-git clone YOUR_GITHUB_REPOSITORY_URL
+git clone https://github.com/amrit-maker/CropGuard.git
 cd CropGuard
 ```
 
