@@ -1,2 +1,2 @@
-ultralytics==8.4.211opencv-python>=4.8.0
+ultralytics==8.4.211
 opencv-python>=4.8.0
