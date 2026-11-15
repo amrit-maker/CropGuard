@@ -171,6 +171,4 @@ Some things I would like to improve:
 - Testing on images captured in real field conditions.
 - Improving live camera detection under different lighting conditions.
 
-## Note
 
-This is an ongoing project. The model is still experimental, and its predictions may not always be correct, especially in cases where weeds are difficult to distinguish from crops.
